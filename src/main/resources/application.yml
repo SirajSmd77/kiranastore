@@ -1,0 +1,8 @@
+rate-limiting:
+  transactions:
+    limit: 10
+    period: 60  # In seconds
+
+
+
+
