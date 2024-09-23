@@ -20,6 +20,11 @@ public class TransactionController {
     @Autowired
     UserService userService;
 
+    public TransactionController(UserService userService) {
+        this.userService = userService;
+    }
+
+
     @Autowired
     private TransactionService transactionService;
 
@@ -30,24 +35,16 @@ public class TransactionController {
             @RequestParam String currency,
             @RequestParam TransactionType type) {
 
-        // Create the TransactionDTO object from the request parameters
         TransactionDTO transactionDTO = new TransactionDTO();
         transactionDTO.setAmount(amount);
         transactionDTO.setCurrency(currency);
         transactionDTO.setType(type);
 
-        // Call the service to create the transaction
         Transaction createdTransaction = transactionService.createTransaction(transactionDTO);
 
         return ResponseEntity.ok(createdTransaction);
     }
 
-
-
-
-    public TransactionController(UserService userService) {
-            this.userService = userService;
-        }
 
         @PostMapping("/register")
         public String registerUser(
