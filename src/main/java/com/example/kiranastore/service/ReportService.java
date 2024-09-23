@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -55,11 +56,14 @@ public class ReportService {
                 .filter(t -> t.getType() == TransactionType.DEPOSIT)
                 .mapToDouble(Transaction::getAmountInINR)
                 .sum();
-
+         log.info("totalCredits is : {} ",totalCredits);
         double totalDebits = transactions.stream()
                 .filter(t -> t.getType() == TransactionType.WITHDRAWAL)
                 .mapToDouble(Transaction::getAmountInINR)
                 .sum();
+        log.info("totalDebits is : {} ",totalDebits);
+
+        log.info("totalCredits-totalDebits is : {}",totalCredits-totalDebits);
 
         return new ReportDTO(totalCredits, totalDebits, totalCredits - totalDebits);
     }
