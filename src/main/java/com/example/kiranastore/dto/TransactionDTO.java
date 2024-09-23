@@ -27,6 +27,11 @@ public class TransactionDTO {
     public TransactionDTO() {
     }
 
+    public TransactionDTO(double i, String usd, String credit) {
+
+
+    }
+
     public String getCurrency() {
         return currency;
     }
