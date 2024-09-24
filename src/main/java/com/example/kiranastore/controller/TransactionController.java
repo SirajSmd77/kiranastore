@@ -3,6 +3,7 @@ package com.example.kiranastore.controller;
 import com.example.kiranastore.dto.TransactionDTO;
 import com.example.kiranastore.entity.Transaction;
 import com.example.kiranastore.entity.TransactionType;
+import com.example.kiranastore.service.RateLimited;
 import com.example.kiranastore.service.TransactionService;
 import com.example.kiranastore.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,7 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping("api/transaction")
-  // @RateLimited(limit = 10, period = 60) // Custom rate limiting annotation
+   @RateLimited(limit = 10, period = 60) // Custom rate limiting annotation
     public ResponseEntity<Transaction> createTransaction(
             @RequestParam double amount,
             @RequestParam String currency,

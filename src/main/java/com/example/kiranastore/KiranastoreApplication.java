@@ -6,7 +6,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 public class KiranastoreApplication {
 
 	public static void main(String[] args) {
