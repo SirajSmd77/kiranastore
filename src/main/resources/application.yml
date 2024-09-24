@@ -3,6 +3,10 @@ rate-limiting:
     limit: 10
     period: 60  # In seconds
 
+spring:
+  redis:
+    host: localhost
+    port: 6379
 
 
 
